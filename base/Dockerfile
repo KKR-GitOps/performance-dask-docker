@@ -30,4 +30,8 @@ COPY prepare.sh /usr/bin/prepare.sh
 
 RUN mkdir /opt/app
 
+# install worker requirements
+COPY requirements.txt /usr/bin/requirements.txt
+RUN pip install -r /usr/bin/requirements.txt
+
 ENTRYPOINT ["tini", "-g", "--", "/usr/bin/prepare.sh"]
